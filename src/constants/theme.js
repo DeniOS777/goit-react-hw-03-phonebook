@@ -7,7 +7,7 @@ export const theme = {
     red: '#c91c1c',
     redHover: '#b81717',
     inputBorder: '#888888',
-    textPlaceholder: '#2a2a2a',
+    textPlaceholder: '#929292',
     bodyBackgroundColor: '#f1f1f1',
   },
 };

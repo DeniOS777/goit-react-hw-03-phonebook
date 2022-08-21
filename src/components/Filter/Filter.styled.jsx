@@ -16,7 +16,7 @@ export const InputSearch = styled.input`
 
   &::placeholder {
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.inputPlaceholder};
+    color: ${({ theme }) => theme.colors.textPlaceholder};
     letter-spacing: 0.03em;
   }
 `;
