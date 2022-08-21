@@ -19,6 +19,10 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps, prevState) {}
+
   handleChangeFilter = e => this.setState({ filter: e.target.value });
 
   addContact = ({ name, number }) => {
