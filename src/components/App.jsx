@@ -38,6 +38,8 @@ class App extends Component {
 
   handleChangeFilter = e => this.setState({ filter: e.target.value });
 
+  handleClearFilter = () => this.setState({ filter: '' });
+
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
 
@@ -60,10 +62,18 @@ class App extends Component {
     }));
   };
 
-  deleteContact = contactId =>
+  deleteContact = contactId => {
+    const { filter } = this.state;
+
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(({ id }) => id !== contactId),
     }));
+
+    const hasFilteredContacts = this.getFilteredContacts().length - 1 === 0;
+    if (hasFilteredContacts && filter !== '') {
+      this.handleClearFilter();
+    }
+  };
 
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
@@ -88,10 +98,13 @@ class App extends Component {
 
         <Filter filter={filter} onChange={this.handleChangeFilter} />
 
-        <ContactList
-          filteredContacts={filteredContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        {filteredContacts.length > 0 && (
+          <ContactList
+            filteredContacts={filteredContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        )}
+
         <GlobalStyle />
         <ToastContainer autoClose={3000} />
       </Phonebook>
